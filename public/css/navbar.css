@@ -1,0 +1,27 @@
+nav {
+    background-color: #1d3557;
+    color: white;
+    height: 4rem;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.heading {
+    font-family: "Libre Baskerville", serif;
+}
+
+.subheading {
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+main {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+#name {
+    padding-right: 4rem;
+}
