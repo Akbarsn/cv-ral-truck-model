@@ -5,10 +5,7 @@
 
 ## How to Use
 A. First Use
-1. Clone this repository
-```bash
-git clone https://github.com/Akbarsn/hmpdfkub.git
-```
+1. Download the zip in this link https://github.com/Akbarsn/cv-ral-truck-model
 2. Install dependecy
 ```bash
 composer install
