@@ -18,6 +18,10 @@ class CreatePenerimaansTable extends Migration
             $table->string('ID_rekapitulasi', 4);
             $table->string('ID_calon', 4);
             $table->string('posisi_lamaran', 50);
+
+            $table->primary('ID_penerimaan');
+            $table->foreign('ID_rekapitulasi')->references('ID_rekapitulasi')->on('rekapitulasi_penilaian');
+            $table->foreign('ID_calon')->references('ID_calon')->on('user_calon');
         });
     }
 

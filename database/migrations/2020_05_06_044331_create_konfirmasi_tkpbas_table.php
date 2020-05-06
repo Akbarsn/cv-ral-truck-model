@@ -20,8 +20,8 @@ class CreateKonfirmasiTkpbasTable extends Migration
         $table->string('jawaban_soal');
 
         $table->primary('ID_konfirmasi');
-        $table->foreign('ID_user')->references('ID_user')->on('user_calon')
-        $table->foreign('ID_tes')->references('ID_tes')->on('tes_tkpba')
+        $table->foreign('ID_user')->references('ID_user')->on('user_perusahaan');
+        $table->foreign('ID_tes')->references('ID_tes')->on('tes_tkpba');
         });
     }
 
