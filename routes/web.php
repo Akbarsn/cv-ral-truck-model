@@ -29,5 +29,11 @@ Route::get('/dirut/dashboard', 'DirutController@GetDashboard');
 Route::get('/karyawan/{id}/dashboard', 'KaryawanController@GetDashboard');
 Route::get('/admin/dashboard', 'AdminController@GetDashboard');
 
+Route::post('/tambah-soal', 'AdminController@AddSoal');
+
+Route::post('/ubah-status', 'AdminController@EditStatusCakar');
+
+Route::get('/ambil-test/{id}', 'KaryawanController@AmbilTest');
+
 
 

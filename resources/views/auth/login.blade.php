@@ -31,6 +31,12 @@
                 <div class="col-6">
                     <div class="card">
                         <div class="card-body">
+                            <div class="center">
+                            <img src="{{asset('img/logo.jpg')}}" id="logo">
+                            </div>
+                            <h5 class="heading text-center">
+                                Sistem Informasi Rekrutmen<br>CV RAL TRUCK MODEL
+                            </h5>
                             <h1 class="heading text-center">
                                 Login
                             </h1>

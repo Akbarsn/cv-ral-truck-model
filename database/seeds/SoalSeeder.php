@@ -14,18 +14,18 @@ class SoalSeeder extends Seeder
     {
         DB::table('soal_tkpba')->insert([
             'ID_soal' => 'S001',
-            'data_soal' => '/soal/soal1.docx',
-            'jawaban_soal' => '/soal/kunci1.docx'
+            'data_soal' => 'Soal1.docx',
+            'jawaban_soal' => 'Kunci1.docx'
         ]);
         DB::table('soal_tkpba')->insert([
             'ID_soal' => 'S002',
-            'data_soal' => '/soal/soal2.docx',
-            'jawaban_soal' => '/soal/kunci2.docx'
+            'data_soal' => 'Soal2.docx',
+            'jawaban_soal' => 'Kunci2.docx'
         ]);
         DB::table('soal_tkpba')->insert([
             'ID_soal' => 'S003',
-            'data_soal' => '/soal/soal3.docx',
-            'jawaban_soal' => '/soal/kunci3.docx'
+            'data_soal' => 'Soal3.docx',
+            'jawaban_soal' => 'Kunci3.docx'
         ]);
     }
 }

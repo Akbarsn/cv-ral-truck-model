@@ -16,31 +16,31 @@ class KonfirmasiSeeder extends Seeder
             'ID_konfirmasi' => 'K001',
             'ID_user' => 'U003',
             'ID_tes' => 'T001',
-            'jawaban_soal' => '/jawaban/jawaban1.docx'
+            'jawaban_soal' => 'Jawaban1.docx'
         ]);
         DB::table('konfirmasi_tkpba')->insert([
             'ID_konfirmasi' => 'K002',
             'ID_user' => 'U003',
             'ID_tes' => 'T002',
-            'jawaban_soal' => '/jawaban/jawaban2.docx'
+            'jawaban_soal' => 'Jawaban2.docx'
         ]);
         DB::table('konfirmasi_tkpba')->insert([
             'ID_konfirmasi' => 'K003',
             'ID_user' => 'U003',
             'ID_tes' => 'T003',
-            'jawaban_soal' => '/jawaban/jawaban3.docx'
+            'jawaban_soal' => 'Jawaban3.docx'
         ]);
         DB::table('konfirmasi_tkpba')->insert([
             'ID_konfirmasi' => 'K004',
             'ID_user' => 'U003',
             'ID_tes' => 'T004',
-            'jawaban_soal' => '/jawaban/jawaban4.docx'
+            'jawaban_soal' => 'Jawaban4.docx'
         ]);
         DB::table('konfirmasi_tkpba')->insert([
             'ID_konfirmasi' => 'K005',
             'ID_user' => 'U003',
             'ID_tes' => 'T005',
-            'jawaban_soal' => '/jawaban/jawaban5.docx'
+            'jawaban_soal' => 'Jawaban5.docx'
         ]);
     }
 }

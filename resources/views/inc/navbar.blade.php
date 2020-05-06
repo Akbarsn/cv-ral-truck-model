@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/navbar.css')}}">
-<nav class="navbar fixed-top navbar-expand-md">
-    <span class="navbar-brand">Sistem Informasi Rekrutmen</span>
+<nav class="navbar fixed-top navbar-expand-md ">
+<span class="navbar-brand"><img src="{{asset('img/logo.jpg')}}" style="height: 3rem"> &nbsp; Sistem Informasi Rekrutmen, CV RAL TRUCK MODEL</span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_hmpd" aria-controls="navbar_hmpd" aria-expanded="false" aria-label="Toggle navigation">
         <span style="color:white; font-size:24px"><i class="fas fa-list-ul"></i></span>
     </button>

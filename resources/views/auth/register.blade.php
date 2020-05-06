@@ -27,6 +27,12 @@
 <body>
     <main id="register">
         <div class="container">
+            <div class="center">
+                <img src="{{asset('img/logo.jpg')}}" id="logo">
+            </div>
+            <h5 class="heading text-center">
+                Sistem Informasi Rekrutmen<br>CV RAL TRUCK MODEL
+            </h5>
             <div class="text-center">
                 <h1 class="heading">
                     Register
