@@ -20,7 +20,7 @@ class CreateTesTkpbasTable extends Migration
 
             $table->primary('ID_tes');
             $table->foreign('ID_soal')->references('ID_soal')->on('soal_tkpba');
-            $table->foreign('ID_calon')->references('ID_calon')->on('user_calon');
+            $table->foreign('ID_calon')->references('ID_calon')->on('user_calon')->onDelete('cascade');
         });
     }
 

@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\HasilTkpba;
+use App\Konfirmasi_tkpba;
 use Illuminate\Http\Request;
 use App\RekapitulasiPenilaian;
 use App\SoalTKPBA;
 use App\TesTkpba;
+use App\UserCalon;
 
 class AdminController extends Controller
 {
-    public function GetDashboard(Request $request)
+    public function GetDashboard()
     {
         //Read
         $rekap = RekapitulasiPenilaian::join('user_calon', 'rekapitulasi_penilaian.ID_calon', '=', 'user_calon.ID_calon')
-            ->select('rekapitulasi_penilaian.*', 'user_calon.nama')->whereNotIn('status_calon', ["Lulus", "Tidak"])->get();
+            ->select('rekapitulasi_penilaian.*', 'user_calon.*')->whereNotIn('status_calon', ["Lulus", "Tidak"])->get();
         $soal = SoalTKPBA::all();
 
         return view('pages.dashboard_admin')->with('rekap', $rekap)->with('soal', $soal);
@@ -69,6 +72,58 @@ class AdminController extends Controller
         }
 
         return redirect(url('/admin/dashboard'))->with('success', "Berhasil Merubah Rekap Nilai");
+    }
+
+    public function GetBeriNilaiPage($id)
+    {
+        $jawaban = Konfirmasi_tkpba::join('tes_tkpba', 'konfirmasi_tkpba.ID_tes', '=', 'tes_tkpba.ID_tes')
+            ->where('ID_calon', $id)->first();
+        $soal = SoalTKPBA::where('ID_soal', $jawaban->ID_soal)->first();
+
+        return view('pages.nilai')->with('jawaban', $jawaban)->with('soal', $soal);
+    }
+
+    public function BeriNilai(Request $request)
+    {
+        $ID_calon = $request->input('ID_calon');
+        $ID_konfirmasi = $request->input('ID_konfirmasi');
+        $nilai = $request->input('nilai');
+        $status = $nilai >= 80 ? "Lulus" : "Tidak";
+
+        $hasil = new HasilTkpba;
+        $hasil->ID_hasil = $this->GetIDHasil();
+        $hasil->ID_konfirmasi = $ID_konfirmasi;
+        $hasil->nilai = $nilai;
+        $hasil->status_tkpba = $status;
+        $hasil->save();
+
+        $rekap = RekapitulasiPenilaian::where('ID_calon', $ID_calon)->first();
+        $rekap->status_tkpba = $status;
+        $rekap->save();
+
+        return redirect(url('/admin/dashboard'))->with('success', "Berhasil Merubah Rekap Nilai");
+    }
+
+    public function HapusKaryawan($id)
+    {
+        $user = UserCalon::find($id);
+        $user->delete();
+
+        return redirect(url('/admin/dashboard'))->with('success', "Berhasil menghapus data karyawan");
+    }
+
+    public function GetIDHasil()
+    {
+        $soal = HasilTkpba::all();
+        $id = count($soal) + 1;
+
+        if (count($soal) >= 100) {
+            return "H" . $id;
+        } else if (count($soal) >= 10) {
+            return "H0" . $id;
+        } else {
+            return "H00" . $id;
+        }
     }
 
     public function GetIDSoal()

@@ -14,9 +14,11 @@
         </section>
 
         <section id="content">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah_soal">
-                Tambah Soal
-            </button>
+            <div class="d-flex">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah_soal">
+                    Tambah Soal
+                </button>
+            </div>
             <div class="modal fade" id="tambah_soal" tabindex="-1" role="dialog" aria-labelledby="tambah"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -57,7 +59,7 @@
                         <th scope="col">Status Psikologi</th>
                         <th scope="col">Interview</th>
                         <th scope="col">Status Calon</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col" colspan="3">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,40 +70,7 @@
                         <td>{{$r->nama}}</td>
                         <td>{{$r->status_administrasi}}</td>
                         <td>@if ($r->status_tkpba == "Selesai")
-                            <button class="btn btn-primary" type="button" data-toggle="modal"
-                                data-target="#cek{{$r->ID_calon}}">Cek Jawaban</button>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Cek Jawaban</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <form action="{{url('')}}" method="POST">
-                                            @csrf
-                                            <div class="modal-body">
-                                                <h3 class="heading">Soal</h3>
-                                                <h3 class="heading">Jawaban</h3>
-                                                <h3 class="heading">Kunci Jawaban</h3>
-
-                                                <div class="form-group">
-                                                    <label for="nilai">Nilai</label>
-                                                    <input type="number" class="form-control" id="nilai">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                                <input type="submit" class="btn btn-primary" value="Beri Nilai">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <a href="{{url('/beri-nilai')}}/{{$r->ID_calon}}">Cek Jawaban</a>
                             @else
                             {{$r->status_tkpba}}
                             @endif
@@ -111,7 +80,48 @@
                         <td>{{$r->status_calon}}</td>
                         <td><button class="btn btn-primary" type="button" data-toggle="modal"
                                 data-target="#modal{{$r->ID_calon}}">Rubah</button></td>
+                        <td><button class="btn btn-info" type="button" data-toggle="modal"
+                                data-target="#detail{{$r->ID_calon}}">Lihat Detail</button></td>
+                        <td><a href="{{url('/karyawan/hapus')}}/{{$r->ID_calon}}" class="btn btn-danger">Hapus</a></td>
                     </tr>
+                    {{-- Modal Lihat Detail --}}
+                <div class="modal fade" id="detail{{$r->ID_calon}}" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Detail Karyawan</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h5>Nama</h5><br>
+                                    <p>{{$r->nama}}</p>
+                                    <h5>No Telepon</h5><br>
+                                    <p>{{$r->no_telepon}}</p>
+                                    <h5>Alamat</h5><br>
+                                    <p>{{$r->alamat}}</p>
+                                    <h5>No KTP</h5><br>
+                                    <p>{{$r->no_ktp}}</p>
+                                    <h5>Agama</h5><br>
+                                    <p>{{$r->agama}}</p>
+                                    <h5>Tanggal Lahir</h5><br>
+                                    <p>{{$r->tanggal_lahir}}</p>
+                                    <h5>Pendidikan Terakhir</h5><br>
+                                    <p>{{$r->pendidikan_terakhir}}</p>
+                                    <h5>Pengalaman Kerja</h5><br>
+                                    <p>{{$r->pengalaman_kerja}} Thn</p>
+                                    <h5>Posisi Lamaran</h5><br>
+                                    <p>{{$r->posisi_lamaran}}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Modal Rubah Status --}}
                     <div class="modal fade" id="modal{{$r->ID_calon}}" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">

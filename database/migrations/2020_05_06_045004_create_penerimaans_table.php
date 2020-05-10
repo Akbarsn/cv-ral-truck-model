@@ -21,7 +21,7 @@ class CreatePenerimaansTable extends Migration
 
             $table->primary('ID_penerimaan');
             $table->foreign('ID_rekapitulasi')->references('ID_rekapitulasi')->on('rekapitulasi_penilaian');
-            $table->foreign('ID_calon')->references('ID_calon')->on('user_calon');
+            $table->foreign('ID_calon')->references('ID_calon')->on('user_calon')->onDelete('cascade');
         });
     }
 

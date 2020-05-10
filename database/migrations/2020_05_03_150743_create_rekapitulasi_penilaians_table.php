@@ -23,7 +23,7 @@ class CreateRekapitulasiPenilaiansTable extends Migration
             $table->string('status_calon', 10)->default("Tunggu");
 
             $table->primary('ID_rekapitulasi');
-            $table->foreign('ID_calon')->references('ID_calon')->on('user_calon');
+            $table->foreign('ID_calon')->references('ID_calon')->on('user_calon')->onDelete('cascade');
         });
     }
 

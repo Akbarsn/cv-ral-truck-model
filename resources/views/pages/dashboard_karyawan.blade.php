@@ -13,11 +13,11 @@
     </section>
 
     <section id="content">
-        {{-- @if ($rekap->status_calon == "Lulus")
+        @if (count($terima)>0)
         <div class="text-center" id="pengumuman">
-            <h1 class="heading">Selamat anda lulus semua tahap</h1>
+            <h1 class="heading">Selamat anda diterima di {{$terima->posisi_lamaran}}</h1>
         </div>
-        @endif --}}
+        @endif
         <div class="d-flex flex-wrap justify-content-around">
             <div class="col-3">
                 <div class="card">
@@ -36,7 +36,7 @@
                     </div>
                     <div class="card-body text-center">
                         @if ($rekap->status_tkpba=="Ambil")
-                        <a href="{{url('')}}" class="btn btn-primary">Ambil Tes</a>
+                        <a href="{{url('/ambil-test')}}/{{$rekap->ID_calon}}" class="btn btn-primary">Ambil Tes</a>
                         @else
                         <h3 class="subheading">{{$rekap->status_tkpba}}</h3>
                         @endif

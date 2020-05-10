@@ -15,7 +15,7 @@ class CreateKonfirmasiTkpbasTable extends Migration
     {
         Schema::create('konfirmasi_tkpba', function (Blueprint $table) {
         $table->string('ID_konfirmasi', 4);
-        $table->string('ID_user', 4);
+        $table->string('ID_user', 4)->default('-');
         $table->string('ID_tes', 4);
         $table->string('jawaban_soal');
 

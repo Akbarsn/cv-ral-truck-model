@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function(){
+Route::get('/', function () {
     return view('auth.login');
 });
 
 Route::post('/login/send', 'AuthController@Login');
 
-Route::get('/register', function(){
+Route::get('/register', function () {
     return view('auth.register');
 });
 
@@ -33,7 +33,14 @@ Route::post('/tambah-soal', 'AdminController@AddSoal');
 
 Route::post('/ubah-status', 'AdminController@EditStatusCakar');
 
+Route::get('/beri-nilai/{id}', 'AdminController@GetBeriNilaiPage');
+
+Route::get('/karyawan/terima/{id}', 'DirutController@TerimaKaryawan');
+
+Route::get('/karyawan/hapus/{id}','AdminController@HapusKaryawan');
+
+Route::post('/status/tkpba', 'AdminController@BeriNilai');
+
 Route::get('/ambil-test/{id}', 'KaryawanController@AmbilTest');
 
-
-
+Route::post('/tes/send', 'KaryawanController@SendJawaban');

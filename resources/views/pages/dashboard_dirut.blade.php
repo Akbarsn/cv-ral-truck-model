@@ -38,9 +38,47 @@
                         <td>{{$r->status_psikologi}}</td>
                         <td>{{$r->interview}}</td>
                         <td>{{$r->status_calon}}</td>
-                        <td><button class="btn btn-primary">Buat Surat</button></td>
-                        <td><button class="btn btn-primary">Lihat Detail</button></td>
+                        <td><a class="btn btn-primary" href="{{url('/karyawan/terima')}}/{{$r->ID_calon}}">Terima</a></td>
+                        <td><button class="btn btn-info" type="button" data-toggle="modal"
+                            data-target="#detail{{$r->ID_calon}}">Lihat Detail</button></td>
                     </tr>
+
+                    <div class="modal fade" id="detail{{$r->ID_calon}}" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Detail Karyawan</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h5>Nama</h5><br>
+                                    <p>{{$r->nama}}</p>
+                                    <h5>No Telepon</h5><br>
+                                    <p>{{$r->no_telepon}}</p>
+                                    <h5>Alamat</h5><br>
+                                    <p>{{$r->alamat}}</p>
+                                    <h5>No KTP</h5><br>
+                                    <p>{{$r->no_ktp}}</p>
+                                    <h5>Agama</h5><br>
+                                    <p>{{$r->agama}}</p>
+                                    <h5>Tanggal Lahir</h5><br>
+                                    <p>{{$r->tanggal_lahir}}</p>
+                                    <h5>Pendidikan Terakhir</h5><br>
+                                    <p>{{$r->pendidikan_terakhir}}</p>
+                                    <h5>Pengalaman Kerja</h5><br>
+                                    <p>{{$r->pengalaman_kerja}} Thn</p>
+                                    <h5>Posisi Lamaran</h5><br>
+                                    <p>{{$r->posisi_lamaran}}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     @endforeach
                 </tbody>
             </table>
