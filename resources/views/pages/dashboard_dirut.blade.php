@@ -14,6 +14,8 @@
         </section>
 
         <section id="content">
+            <a class="btn btn-primary" href="{{url('/cetak-laporan')}}">Cetak Laporan</a>
+
             <table class="table">
                 <thead class="thead-dark">
                     <tr class="text-center">

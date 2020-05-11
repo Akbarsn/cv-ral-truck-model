@@ -85,7 +85,7 @@
                         <td><a href="{{url('/karyawan/hapus')}}/{{$r->ID_calon}}" class="btn btn-danger">Hapus</a></td>
                     </tr>
                     {{-- Modal Lihat Detail --}}
-                <div class="modal fade" id="detail{{$r->ID_calon}}" tabindex="-1" role="dialog"
+                    <div class="modal fade" id="detail{{$r->ID_calon}}" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -148,10 +148,14 @@
                                             <label for="tkpba">Status TKPBA</label>
                                             <select class="form-control" id="tkpba" name="tkpba">
                                                 <option value="Tunggu">Tunggu</option>
+                                                @if ($r->status_tkpba == "Tunggu")
                                                 <option value="Ambil">Ambil</option>
+                                                @endif
+                                                <option value="Lulus">Lulus</option>
                                                 <option value="Tidak">Tidak</option>
                                             </select>
                                         </div>
+                                        @if ($r->status_tkpba == "Tunggu")
                                         <div class="form-group">
                                             <label for="soal">Soal untuk Tes TKPBA</label>
                                             <select class="form-control" id="tkpba" name="soal">
@@ -161,6 +165,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
+                                        @endif
                                         <div class="form-group">
                                             <label for="psikologi">Status Psikologi</label>
                                             <select class="form-control" id="psikologi" name="psikologi">
@@ -173,7 +178,7 @@
                                             <label for="interview">Interview</label>
                                             <select class="form-control" id="interview" name="interview">
                                                 <option value="Tunggu">Tunggu</option>
-                                                <option value="Ambil">Ambil</option>
+                                                <option value="Lulus">Lulus</option>
                                                 <option value="Tidak">Tidak</option>
                                             </select>
                                         </div>

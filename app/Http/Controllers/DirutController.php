@@ -6,6 +6,8 @@ use App\Penerimaan;
 use App\RekapitulasiPenilaian;
 use App\UserCalon;
 use Illuminate\Http\Request;
+use PDF;
+
 
 class DirutController extends Controller
 {
@@ -30,6 +32,14 @@ class DirutController extends Controller
         $terima->save();
 
         return redirect(url('/dirut/dashboard'))->with('success', 'Karyawan berhasil diterima');
+    }
+
+    public function LaporanPenerimaan()
+    {
+        $data = Penerimaan::join('user_calon', 'penerimaan.ID_calon', '=', 'user_calon.ID_calon')->get();
+
+        $pdf = PDF::loadview('laporan', ['data' => $data]);
+        return $pdf->stream();
     }
 
     public function GetIDPenerimaan()

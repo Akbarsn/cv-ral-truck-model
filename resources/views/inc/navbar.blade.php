@@ -12,7 +12,7 @@
                 <li class="nav-item dropdown">
                 <span class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="name">Hello {{session('name')}}</span>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="/">Log Out</a>
+                        <a class="dropdown-item" href="{{url('/log-out')}}">Log Out</a>
                     </div>
                 </li>
             </ul>

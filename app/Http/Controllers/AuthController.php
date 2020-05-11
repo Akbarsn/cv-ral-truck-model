@@ -116,4 +116,10 @@ class AuthController extends Controller
             return "R00" . $id;
         }
     }
+
+    public function LogOut(Request $request){
+        $request->session()->flush();
+
+        return redirect(url(''))->with('success', "Berhasil Log Out");
+    }
 }

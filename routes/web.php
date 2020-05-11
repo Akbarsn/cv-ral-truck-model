@@ -23,6 +23,8 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
+Route::get('/log-out', 'AuthController@LogOut');
+
 Route::post('/register/send', 'AuthController@Register');
 
 Route::get('/dirut/dashboard', 'DirutController@GetDashboard');
@@ -44,3 +46,5 @@ Route::post('/status/tkpba', 'AdminController@BeriNilai');
 Route::get('/ambil-test/{id}', 'KaryawanController@AmbilTest');
 
 Route::post('/tes/send', 'KaryawanController@SendJawaban');
+
+Route::get('/cetak-laporan', 'DirutController@LaporanPenerimaan');

@@ -16,7 +16,7 @@ class AdminController extends Controller
     {
         //Read
         $rekap = RekapitulasiPenilaian::join('user_calon', 'rekapitulasi_penilaian.ID_calon', '=', 'user_calon.ID_calon')
-            ->select('rekapitulasi_penilaian.*', 'user_calon.*')->whereNotIn('status_calon', ["Lulus", "Tidak"])->get();
+            ->select('rekapitulasi_penilaian.*', 'user_calon.*')->get();
         $soal = SoalTKPBA::all();
 
         return view('pages.dashboard_admin')->with('rekap', $rekap)->with('soal', $soal);
@@ -55,12 +55,22 @@ class AdminController extends Controller
         extract($input);
 
         //Update
+
+
         $nilai = RekapitulasiPenilaian::where('ID_calon', $id)->first();
         $nilai->status_administrasi = $administrasi;
         $nilai->status_tkpba = $tkpba;
         $nilai->status_psikologi = $psikologi;
         $nilai->interview = $interview;
+        if ($tkpba == "Tidak" || $psikologi == "Tidak" || $interview == "Tidak" || $administrasi == "Tidak") {
+            $nilai->status_calon = "Tidak";
+        }
+
+        if ($interview == "Lulus") {
+            $nilai->status_calon = "Lulus";
+        }
         $nilai->save();
+
 
         if ($tkpba == "Ambil" && $soal != null) {
             //Create

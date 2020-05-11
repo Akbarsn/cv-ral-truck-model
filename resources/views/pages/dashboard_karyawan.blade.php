@@ -13,9 +13,9 @@
     </section>
 
     <section id="content">
-        @if (count($terima)>0)
+        @if (!empty($terima))
         <div class="text-center" id="pengumuman">
-            <h1 class="heading">Selamat anda diterima di {{$terima->posisi_lamaran}}</h1>
+            <h2 class="heading">Selamat anda diterima di posisi {{$terima->posisi_lamaran}}</h2>
         </div>
         @endif
         <div class="d-flex flex-wrap justify-content-around">
